@@ -1,10 +1,10 @@
 # Strobe Tuner based on Teensy 3.6
 
-In this project I built a **guitar tuner** similar to a strobe tuner. A strobe tuner uses a strobe triggered by the positive or negative half-wave of an musicla instrument signal. The strobe is used to illuminate a disc with rotates at the desired tuning frequency. The disc has a regular pattern on it which seems to be standing still if the instrument is in tune. If the instrument is out of tune, the pattern seems to rotate clockwise or counter-clockwise depending on the frequency difference between instrument and reference. Strobe tuners allow for a much higher accuracy than tuners based on autocorrelation etc.
+In this project I built a **guitar tuner** similar to a strobe tuner. A strobe tuner uses a strobe triggered by the positive or negative half-wave of a musical instrument signal. The strobe is used to illuminate a disc which rotates at the desired tuning frequency. The disc has a regular pattern on it which seems to be standing still if the instrument is in tune. If the instrument is out of tune, the pattern seems to rotate clockwise or counter-clockwise depending on the sign of the frequency difference between instrument and reference. Strobe tuners allow for a much higher accuracy than tuners based on autocorrelation etc.
 
 ## Hardware
-Instead of a rotating disc **two SN74HC595 shift registers** are used as a ring buffer shifting a single one through its sixteen bits. The one is shifted through the buffer with the desired tuning frequency. The outputs of the shift registers are connected to 16 LED soldered in one row (the may also be soldered in a circular pattern).
-To control the shift registers and as a frequency reference a **Teensy 3.6** development board is used. The Teensy board is also used for detection of the plugged string. For this purpose an [implementation of the YIN algorithm](https://github.com/duff2013/AudioTuner) for Teensy Audio Library is used.
+Instead of a rotating disc **two SN74HC595 shift registers** are used as a ring buffer shifting a single one through its sixteen bits. The one is shifted through the buffer with the desired tuning frequency. The outputs of the shift registers are connected to 16 LEDs soldered in one row (they may also be soldered in a circular pattern).
+To control the shift registers and as a frequency reference a **Teensy 3.6** development board is used. The Teensy board is also used for detection of the plucked string. For this purpose an [implementation of the YIN algorithm](https://github.com/duff2013/AudioTuner) for Teensy Audio Library is used.
 For the input of the guitar signal a home-made board is used. It contains a **non-inverting amplifier** with gain 2 and offset of 0.6 V. The amplifier uses a **LM358 op-amp**.
 
 ### Datasheets/Specs
@@ -29,7 +29,7 @@ I have tested the hardware and software with a Les-Paul-style electrical guitar 
 10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1,..,L9,LA,..,LH: LEDS  
 G: Ground (Teensy)  
 
- G  L7 L6 L5 L4 L3 L2 L1   LH LG LF LE LD LC LB LA                   
+ G  L8 L7 L6 L5 L4 L3 L2   LH LG LF LE LD LC LB LA                   
  |  |  |  |  |  |  |  |    |  |  |  |  |  |  |  |  
  08 07 06 05 04 03 02 01   08 07 06 05 04 03 02 01  
 |-----------------------| |-----------------------|  

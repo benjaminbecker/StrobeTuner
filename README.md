@@ -7,6 +7,13 @@ Instead of a rotating disc **two SN74HC595 shift registers** are used as a ring 
 To control the shift registers and as a frequency reference a **Teensy 3.6** development board is used. The Teensy board is also used for detection of the plugged string. For this purpose an [implementation of the YIN algorithm](https://github.com/duff2013/AudioTuner) for Teensy Audio Library is used.
 For the input of the guitar signal a home-made board is used. It contains a **non-inverting amplifier** with gain 2 and offset of 0.6 V. The amplifier uses a **LM358 op-amp**.
 
+### Datasheets/Specs
+[Teensy 3.6](https://www.pjrc.com/teensy/techspecs.html)  
+
+[shift register SN74HC595](http://www.ti.com/lit/ds/symlink/sn74hc595.pdf)  
+
+[op amp LM358](http://www.ti.com/lit/ds/symlink/lm158-n.pdf)  
+
 ## Software
 The software for the Teensy 3.6 development board was written using **PlatformIO**. It uses the **Teensy Audio Library** and the audio blocks were wired using [Audio System Design Tool for Teensy Audio Library](https://www.pjrc.com/teensy/gui/index.html).  
 The software measures the fundamental frequency of the incoming frequency using the YIN algorithm. From this frequency the most likely string of a guitar is guessed and the tuning frequency is set to the value corresponding to the string. The RCLK and SRCLK are used to shift the bit in the shift register with a frequency of 16 (= number of LEDs) times the tuning frequency.

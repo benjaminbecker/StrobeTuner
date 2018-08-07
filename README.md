@@ -11,7 +11,7 @@ For the input of the guitar signal a home-made board is used. It contains a **no
 
 ## Wiring Diagram
 
-10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1, .., LE: LEDS  
+```10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1, .., LE: LEDS  
 G: Ground (Teensy)  
 
  G  L7 L6 L5 L4 L3 L2 L1  
@@ -22,10 +22,10 @@ G: Ground (Teensy)
 |-----------------------| |-----------------------|  
  09 10 11 12 13 14 15 16   09 10 11 12 13 14 15 16  
     |  |  |  |  |  |  |    |  |  |  |  |  |  |  
-    |  |  |  |  |  L1 3V   | [same as \#1] |  L9  
+    |  |  |  |  |  L1 3V   | [same as #1] |  L9  
     |  |  |  |  |          |              |  
     |  |  |  |  |          |              ----Pin 09 of sn74hc595 \#1  
-    29 31 32 DA 30         ----Pin 14 of sn74hc595 \#1  
+    29 31 32 DA 30         ----Pin 14 of sn74hc595 #1  
 |-----------------------|  
 |    Teensy 3.6         |  DA = DAC0  
 |-----------------------|  
@@ -39,3 +39,4 @@ G: Ground (Teensy)
 |--------------------------|  
 | Guitar input circuit     | -> = Signal  
 |--------------------------|  
+```

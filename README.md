@@ -8,23 +8,29 @@ To control the shift registers and as a frequency reference a **Teensy 3.6** dev
 For the input of the guitar signal a home-made board is used. It contains a **non-inverting amplifier** with gain 2 and offset of 0.6 V. The amplifier uses a **LM358 op-amp**.
 
 ## Software
-The software for the Teensy 3.6 development board was written using **PlatformIO**.
+The software for the Teensy 3.6 development board was written using **PlatformIO**. It uses the **Teensy Audio Library** and the audio blocks were wired using [Audio System Design Tool for Teensy Audio Library](https://www.pjrc.com/teensy/gui/index.html).  
+The software measures the fundamental frequency of the incoming frequency using the YIN algorithm. From this frequency the most likely string of a guitar is guessed and the tuning frequency is set to the value corresponding to the string. The RCLK and SRCLK are used to shift the bit in the shift register with a frequency of 16 (= number of LEDs) times the tuning frequency.
+The software has successfully been tested on Teensy 3.6 and it seems to not work on Teensy 3.2. Maybe it works on Teensy 3.2 with some modifications.
+
+## Tests
+I have tested the hardware and software with a Les-Paul-style electrical guitar and it works great. No more reason to get accused of bad intonation.
+
 
 ## Wiring Diagram
 
 ```  
-10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1, .., LE: LEDS  
+10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1,..,L9,LA,..,LH: LEDS  
 G: Ground (Teensy)  
 
- G  L7 L6 L5 L4 L3 L2 L1  
- |  |  |  |  |  |  |  |  
- 08 07 06 05 04 03 02 01  
+ G  L7 L6 L5 L4 L3 L2 L1   LH LG LF LE LD LC LB LA                   
+ |  |  |  |  |  |  |  |    |  |  |  |  |  |  |  |  
+ 08 07 06 05 04 03 02 01   08 07 06 05 04 03 02 01  
 |-----------------------| |-----------------------|  
 |    sn74hc595 #1       | |    sn74hc595 #2       |  
 |-----------------------| |-----------------------|  
  09 10 11 12 13 14 15 16   09 10 11 12 13 14 15 16  
-    |  |  |  |  |  |  |    |  |  |  |  |  |  |  
-    |  |  |  |  |  L1 3V   | [same as #1] |  L9  
+    |  |  |  |  |  |  |    |  |  |  |  |  |  |  |  
+    |  |  |  |  |  L1 3V   | [same as #1] |  L9  3V  
     |  |  |  |  |          |              |  
     |  |  |  |  |          |              ----Pin 09 of sn74hc595 \#1  
     29 31 32 DA 30         ----Pin 14 of sn74hc595 #1  

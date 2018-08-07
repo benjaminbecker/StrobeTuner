@@ -2,6 +2,8 @@
 
 In this project I built a **guitar tuner** similar to a strobe tuner. A strobe tuner uses a strobe triggered by the positive or negative half-wave of a musical instrument signal. The strobe is used to illuminate a disc which rotates at the desired tuning frequency. The disc has a regular pattern on it which seems to be standing still if the instrument is in tune. If the instrument is out of tune, the pattern seems to rotate clockwise or counter-clockwise depending on the sign of the frequency difference between instrument and reference. Strobe tuners allow for a much higher accuracy than tuners based on autocorrelation etc.
 
+![image of strobe tuner](https://github.com/benjaminbecker/StrobeTuner/pics/strobe_tuner.jpg)
+
 ## Hardware
 Instead of a rotating disc **two SN74HC595 shift registers** are used as a ring buffer shifting a single one through its sixteen bits. The one is shifted through the buffer with the desired tuning frequency. The outputs of the shift registers are connected to 16 LEDs soldered in one row (they may also be soldered in a circular pattern).
 To control the shift registers and as a frequency reference a **Teensy 3.6** development board is used. The Teensy board is also used for detection of the plucked string. For this purpose an [implementation of the YIN algorithm](https://github.com/duff2013/AudioTuner) for Teensy Audio Library is used.

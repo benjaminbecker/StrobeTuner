@@ -8,10 +8,12 @@ To control the shift registers and as a frequency reference a **Teensy 3.6** dev
 For the input of the guitar signal a home-made board is used. It contains a **non-inverting amplifier** with gain 2 and offset of 0.6 V. The amplifier uses a **LM358 op-amp**.
 
 ## Software
+The software for the Teensy 3.6 development board was written using **PlatformIO**.
 
 ## Wiring Diagram
 
-```10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1, .., LE: LEDS  
+```  
+10:SRCLR, 11:SRCLK, 12:RCLK, 13:OE, 14:SER, L1, .., LE: LEDS  
 G: Ground (Teensy)  
 
  G  L7 L6 L5 L4 L3 L2 L1  

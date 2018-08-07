@@ -55,3 +55,8 @@ G: Ground (Teensy)
 | Guitar input circuit     | -> = Signal  
 |--------------------------|  
 ```
+
+## To Do
+* Design PCB
+* Test with Teensy 3.5
+* Test with Teensy 3.2 and external frequency generator

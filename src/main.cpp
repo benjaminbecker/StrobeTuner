@@ -29,9 +29,9 @@ const float stringFrequencies[6] = {82.41,110.0,146.83,196,246.94,329.63};
 IntervalTimer shiftTimer;
 // shift register controller
 // Teensy 3.6
-// ShiftRegister shiftRegister1(29, 30, 31, 32);
+ShiftRegister shiftRegister1(29, 30, 31, 32);
 // Teensy 3.2
-ShiftRegister shiftRegister1(9, 10, 11, 12);
+// ShiftRegister shiftRegister1(9, 10, 11, 12);
 
 float frequencyEstimate;
 

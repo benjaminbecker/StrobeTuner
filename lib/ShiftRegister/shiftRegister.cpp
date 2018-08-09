@@ -1,13 +1,6 @@
 #include "shiftRegister.h"
 #include <Arduino.h>
 
-ShiftRegister::ShiftRegister(int clearpin, int datapin, int clockpin, int latchpin){
-  clearPin = clearpin;
-  dataPin = datapin;
-  clockPin = clockpin;
-  latchPin = latchpin;
-}
-
 void ShiftRegister::initShiftRegister(void){
   // Pin Configuration
   pinMode(clearPin,OUTPUT);

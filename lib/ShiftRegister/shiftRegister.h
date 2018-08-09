@@ -3,12 +3,13 @@
 
 class ShiftRegister {
 public:
-  int clearPin, // SRCLR
+  const int clearPin, // SRCLR
   dataPin, // SER
   clockPin, // SRCLK
   latchPin; // RCLK
 
-  ShiftRegister(int clearpin, int datapin, int clockpin, int latchpin);
+  ShiftRegister(int clearPin, int dataPin, int clockPin, int latchPin):
+    clearPin(clearPin), dataPin(dataPin), clockPin(clockPin), latchPin(latchPin){}
   void initShiftRegister(void);
   void shiftShiftRegister(void);
 };

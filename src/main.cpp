@@ -50,11 +50,6 @@ void setString(int idString){
 }
 
 int main(void) {
-  // initialize shift register
-  // Teensy 3.6
-  ShiftRegister shiftRegister1(29, 30, 31, 32);
-  // Teensy 3.2
-  //ShiftRegister shiftRegister1(9, 10, 11, 12);
   // start serial connection
   Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);

@@ -11,6 +11,7 @@ public:
   ShiftRegister(int clearPin, int dataPin, int clockPin, int latchPin):
     clearPin(clearPin), dataPin(dataPin), clockPin(clockPin), latchPin(latchPin){}
   void initShiftRegister(void);
+  void initShiftRegister(const unsigned char value);
   void shiftShiftRegister(void);
 };
 

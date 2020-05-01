@@ -1,7 +1,7 @@
-#include "shiftRegister.h"
+#include "shiftRegisterSPI.h"
 #include <Arduino.h>
 
-void ShiftRegister::initShiftRegister(void){
+void ShiftRegisterSPI::initShiftRegister(void){
   // initializes shift register with a single 1
   // Pin Configuration
   pinMode(clearPin,OUTPUT);
@@ -25,7 +25,7 @@ void ShiftRegister::initShiftRegister(void){
   digitalWrite(latchPin, HIGH);
 }
 
-void ShiftRegister::initShiftRegister(const unsigned char value){
+void ShiftRegisterSPI::initShiftRegister(const unsigned char value){
   // initializes shift register with value (8 bits)
   // Pin Configuration
   pinMode(clearPin,OUTPUT);
@@ -46,9 +46,21 @@ void ShiftRegister::initShiftRegister(const unsigned char value){
   digitalWrite(latchPin, HIGH);
 }
 
-void ShiftRegister::shiftShiftRegister(void){
+void ShiftRegisterSPI::shiftShiftRegister(void){
   digitalWrite(latchPin,LOW);
   digitalWrite(clockPin,LOW);
   digitalWrite(clockPin,HIGH);
   digitalWrite(latchPin,HIGH);
+}
+
+void ShiftRegisterSPI::shiftOutSPI(const unsigned char value1, const unsigned char value2){
+  digitalWrite(latchPin, LOW);
+  SPI.transfer(value1);
+  SPI.transfer(value2);
+  // shiftOut(dataPin, clockPin, MSBFIRST, value);
+  digitalWrite(latchPin, HIGH);
+}
+
+void ShiftRegisterSPI::setBitOrder(const unsigned char bitOrder){
+  SPI.setBitOrder(bitOrder); 
 }
